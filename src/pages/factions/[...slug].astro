@@ -1,0 +1,22 @@
+---
+// Imports
+import { getCollection } from 'astro:content';
+import FactionLayout from '../../layouts/FactionLayout.astro';
+
+// Collection Handeling
+export async function getStaticPaths() {
+	const factions = await getCollection('factions');
+	return factions.map(faction => ({
+		params: { slug: faction.slug },
+		props: { faction },
+	}));
+}
+
+const { faction } = Astro.props;
+const { Content } = await faction.render();
+---
+
+<FactionLayout >
+	<Content/>
+</FactionLayout>
+

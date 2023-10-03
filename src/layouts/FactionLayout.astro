@@ -1,0 +1,58 @@
+---
+// 1. Die content-Eigenschaft bietet Zugriff auf Frontmatter-Daten
+const { content } = Astro.props;
+import Header from '../components/Header.astro'
+---
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <!-- Füge hier andere Kopfzeilen-Elemente wie Stile und Meta-Tags hinzu. -->
+    <title>Infinite Space</title>
+  </head>
+  <header>
+    <Header></Header>
+  </header>
+  <body>
+    <div class="main-container">
+      <slot />
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+		--background-color: #18191a;
+		--heading-color: #b1cadb;
+		--font-color: #5b6b75;
+		--font: 'Open Sans', sans-serif;
+	}
+
+  body {
+		background-color: var(--background-color);
+	}
+
+	h1, h2, h3, p, em, strong, li{
+		font-family: var(--font);
+	}
+
+  h1, h2, h3, ul {
+    color: var(--heading-color);
+  }
+
+  p, li {
+    color: var(--font-color);
+  }
+
+  .main-container {
+		width: 100%;
+    height: 100%;
+		display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+	}
+</style>

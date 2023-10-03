@@ -1,9 +1,14 @@
 ---
-import Header from '../components/Header.astro'
+// Imports
+import Header from "../components/Header.astro";
+import { getCollection } from 'astro:content';
+
+// Const
+
+const factions = await getCollection('factions');
 ---
 
 <html lang="en">
-	
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -11,16 +16,21 @@ import Header from '../components/Header.astro'
 		<meta name="generator" content={Astro.generator} />
 		<title>Infinite Space</title>
 	</head>
-	<header><Header/></header>
+    <header><Header/></header>
 	<body>
 		<div class="main-container">
-			<h1>Infinite Space & Infinite Horrors</h1>
-			<p>
-				Das ist die Wiki der <i>Infinite Space & Infinite Horrors</i> Kampagne. 
-				Ein Sci-Fi Setting, welches für das Uncharted World Regelsystem geschrieben wird.
-				Dieses ist ein "Powered by the Apocalypse"-System.
-			</p>
+			<h1>Wiki</h1>
 		</div>
+		<ul>
+			{
+				factions.map((faction) => (
+					<li>
+						<a href={`/factions/${faction.slug}`}>{faction.data.title}</a>
+					</li>
+				))
+			}
+		</ul>
+		
 	</body>
 </html>
 
@@ -36,16 +46,7 @@ import Header from '../components/Header.astro'
 	}
 
 	body {
-		background-color: var(--background-color); 
-	}
-
-	.main-container {
-		width: 100%;
-		height: 100%;
-		display: flex;
-		justify-content: center;
-		flex-wrap: wrap;
-		
+		background-color: var(--background-color);
 	}
 
 	h1, a, p, i {
@@ -58,5 +59,21 @@ import Header from '../components/Header.astro'
 
 	h1 {
 		color: var(--heading-color);
+	}
+	
+	a {
+		text-decoration: none;
+	}
+	
+	ul {
+		color: var(--heading-color);
+	}
+	.main-container {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		
 	}
 </style>
