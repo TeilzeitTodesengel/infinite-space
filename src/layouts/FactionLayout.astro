@@ -3,7 +3,7 @@
 const { title, tags, image } = Astro.props;
 import Header from '../components/Header.astro'
 
-const logo = image ? `url(${image})` : null;
+const portrait = image ? `url(${image})` : null;
 ---
 <html>
   <head>
@@ -24,7 +24,7 @@ const logo = image ? `url(${image})` : null;
   </body>
 </html>
 
-<style is:global lang="scss"  define:vars={{logo}}>
+<style is:global lang="scss"  define:vars={{portrait}}>
   :root {
 		--background-color: #18191a;
 		--heading-color: #b1cadb;
@@ -38,7 +38,7 @@ const logo = image ? `url(${image})` : null;
 
   body {
     min-height: 100%;
-    background-image: var(--logo);
+    background-image: var(--portrait);
 		background-color: var(--background-color);
     background-repeat: no-repeat;
     background-position: center
@@ -88,7 +88,7 @@ const logo = image ? `url(${image})` : null;
 
   .sidebar {
     padding: 3px;
-    h1, li, ul, p {
+    h1, h2, h3, li, ul, p {
       color: black;
     }
   }
