@@ -22,7 +22,7 @@ import Header from '../components/Header.astro'
   </body>
 </html>
 
-<style is:global>
+<style is:global lang="scss">
   :root {
 		--background-color: #18191a;
 		--heading-color: #b1cadb;
@@ -55,4 +55,26 @@ import Header from '../components/Header.astro'
     align-content: center;
     justify-content: center;
 	}
+
+  .content {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 100%;
+    grid-column-gap: 20px;
+    grid-row-gap: 0px;
+    border: 2px white;
+  }
+
+  .sidebar {
+    background-color: rgb(151, 182, 200);
+    border-radius: 5px;
+  }
+
+  .sidebar {
+    padding: 3px;
+    h1, li, ul, p {
+      color: black;
+    }
+  }
 </style>
