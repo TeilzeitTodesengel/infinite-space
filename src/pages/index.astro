@@ -11,16 +11,18 @@ import Header from '../components/Header.astro'
 		<meta name="generator" content={Astro.generator} />
 		<title>Infinite Space</title>
 	</head>
-	<header><Header/></header>
 	<body>
-		<div class="main-container">
-			<h1>Infinite Space & Infinite Horrors</h1>
-			<p>
-				Das ist die Wiki der <i>Infinite Space & Infinite Horrors</i> Kampagne. 
-				Ein Sci-Fi Setting, welches für das Uncharted World Regelsystem geschrieben wird.
-				Dieses ist ein "Powered by the Apocalypse"-System.
-			</p>
-		</div>
+		<header><Header/></header>
+		<main>
+			<div class="main-container">
+				<h1>Infinite Space & Infinite Horrors</h1>
+				<p>
+					Das ist die Wiki der <i>Infinite Space & Infinite Horrors</i> Kampagne. 
+					Ein Sci-Fi Setting, welches für das Uncharted World Regelsystem geschrieben wird.
+					Dieses ist ein "Powered by the Apocalypse"-System.
+				</p>
+			</div>
+		</main>
 	</body>
 </html>
 
@@ -36,12 +38,15 @@ import Header from '../components/Header.astro'
 	}
 
 	body {
-		background-color: var(--background-color); 
+		margin: 0;
+		padding: 0;
+		background-color: var(--background-color);
+		width: 100%;
+		height: 100%;
 	}
 
 	.main-container {
-		width: 100%;
-		height: 100%;
+		
 		display: flex;
 		justify-content: center;
 		flex-wrap: wrap;

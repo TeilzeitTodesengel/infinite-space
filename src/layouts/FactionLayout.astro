@@ -32,10 +32,16 @@ const logo = image ? `url(${image})` : null;
 		--font: 'Open Sans', sans-serif;
 	}
 
+  html {
+    height: 100%;
+  }
+
   body {
+    min-height: 100%;
     background-image: var(--logo);
 		background-color: var(--background-color);
     background-repeat: no-repeat;
+    background-position: center
 	}
 
 	h1, h2, h3, p, em, strong, li{
