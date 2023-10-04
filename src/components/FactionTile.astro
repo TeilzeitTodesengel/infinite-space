@@ -1,0 +1,33 @@
+---
+const { title, url } = Astro.props
+---
+
+<div>
+    <a href={url}> {title}</a>
+</div>
+
+<style>
+    :root {
+		--background-color: #18191a;
+		--heading-color: #b1cadb;
+		--font-color: #5b6b75;
+		--font: 'Open Sans', sans-serif;
+	}
+
+    div {
+        display: flex;
+        background-color: black;
+        height: 100px;
+        width: 200px;
+        border-radius: 5px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    a {
+        font-family: var(--font);
+        font-size: 1.5em;
+        text-decoration: none;
+        color: var(--heading-color);
+    }
+</style>

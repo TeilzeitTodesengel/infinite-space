@@ -1,7 +1,9 @@
 ---
 // 1. Die content-Eigenschaft bietet Zugriff auf Frontmatter-Daten
-const { content } = Astro.props;
+const { title, tags, image } = Astro.props;
 import Header from '../components/Header.astro'
+
+const logo = image ? `url(${image})` : null;
 ---
 <html>
   <head>
@@ -22,16 +24,18 @@ import Header from '../components/Header.astro'
   </body>
 </html>
 
-<style is:global lang="scss">
+<style is:global lang="scss"  define:vars={{logo}}>
   :root {
 		--background-color: #18191a;
 		--heading-color: #b1cadb;
-		--font-color: #5b6b75;
+		--font-color: #647681;
 		--font: 'Open Sans', sans-serif;
 	}
 
   body {
+    background-image: var(--logo);
 		background-color: var(--background-color);
+    background-repeat: no-repeat;
 	}
 
 	h1, h2, h3, p, em, strong, li{
@@ -63,7 +67,12 @@ import Header from '../components/Header.astro'
     grid-template-rows: 100%;
     grid-column-gap: 20px;
     grid-row-gap: 0px;
-    border: 2px white;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+  }
+
+  .main-content {
+    padding-left: 10px;
   }
 
   .sidebar {

@@ -16,7 +16,7 @@ const { faction } = Astro.props;
 const { Content } = await faction.render();
 ---
 
-<FactionLayout >
+<FactionLayout {...faction.data}>
 	<Content/>
 </FactionLayout>
 

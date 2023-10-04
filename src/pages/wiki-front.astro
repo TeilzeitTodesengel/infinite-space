@@ -1,6 +1,7 @@
 ---
 // Imports
 import Header from "../components/Header.astro";
+import FactionTile from "../components/FactionTile.astro";
 import { getCollection } from 'astro:content';
 
 // Const
@@ -20,21 +21,25 @@ const factions = await getCollection('factions');
 	<body>
 		<div class="main-container">
 			<h1>Wiki</h1>
+			<div id="faction-container">
+				<h3>Fraktionen</h3>
+				<div id="faction-tile-container">
+				
+					{
+						factions.map((faction) => (
+							<FactionTile title={faction.data.title} url={`/factions/${faction.slug}`}/>
+						))
+					}
+				</div>
+			</div>
+			
 		</div>
-		<ul>
-			{
-				factions.map((faction) => (
-					<li>
-						<a href={`/factions/${faction.slug}`}>{faction.data.title}</a>
-					</li>
-				))
-			}
-		</ul>
+		
 		
 	</body>
 </html>
 
-<style>
+<style lang="scss">
 
 	@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
@@ -49,7 +54,7 @@ const factions = await getCollection('factions');
 		background-color: var(--background-color);
 	}
 
-	h1, a, p, i {
+	h1, h2, h3, a, p, i {
 		font-family: var(--font);
 	}
 
@@ -57,7 +62,7 @@ const factions = await getCollection('factions');
 		color: var(--font-color);
 	}
 
-	h1 {
+	h1, h2, h3 {
 		color: var(--heading-color);
 	}
 	
@@ -72,8 +77,30 @@ const factions = await getCollection('factions');
 		width: 100%;
 		height: 100%;
 		display: flex;
-		justify-content: center;
+		align-items: center;
+		flex-direction: column;
 		flex-wrap: wrap;
 		
+	}
+	#faction-container {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		border: rgba(60, 27, 190, 0.7) 2px;
+		border-style: solid;
+		border-radius: 5px;
+		background-color: rgba(60, 27, 190, 0.7);
+	}
+
+	#faction-tile-container {
+		justify-content: center;
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		gap: 3px;
+		width: 612px;
+		height: auto;
 	}
 </style>
