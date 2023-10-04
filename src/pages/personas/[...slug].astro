@@ -1,0 +1,39 @@
+---
+// Imports
+import { getCollection } from 'astro:content';
+import PersonaLayout from '../../layouts/PersonaLayout.astro';
+
+// Collection Handeling
+export async function getStaticPaths() {
+	const personas = await getCollection('personas');
+	return personas.map(persona => ({
+		params: { slug: persona.slug },
+		props: { persona },
+	}));
+}
+
+const { persona } = Astro.props;
+const { Content } = await persona.render();
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Infinite Space</title>
+	</head>
+	<body>
+		<PersonaLayout {...persona.data}>
+			<Content/>
+		</PersonaLayout>
+	</body>
+</html>
+
+<style>
+	body {
+		margin: 0;
+		padding: 0;
+	}
+</style>
+

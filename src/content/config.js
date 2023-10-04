@@ -8,6 +8,16 @@ const factionsCollection = defineCollection({
     }),
 });
 
+const personasCollection = defineCollection({
+    schema: z.object ({
+        name: z.string(),
+        tags: z.array(z.string()),
+        image: z.string().optional(),
+        icon: z.string().optional(),
+    }),
+});
+
 export const collections = {
     'factions': factionsCollection,
+    'personas': personasCollection,
 };

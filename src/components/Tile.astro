@@ -1,12 +1,14 @@
 ---
-const { title, url } = Astro.props
+const { title, url, icon } = Astro.props
 ---
 
 <div>
-    <a href={url}> {title}</a>
+    <a href={url}> <i class=`ra ${icon}`></i>{title}</a>
 </div>
 
-<style>
+<style lang="scss">
+    @import "node_modules/rpg-awesome/scss/rpg-awesome";
+
     :root {
 		--background-color: #18191a;
 		--heading-color: #b1cadb;

@@ -1,12 +1,13 @@
 ---
 // Imports
 import Header from "../components/Header.astro";
-import FactionTile from "../components/FactionTile.astro";
+import Tile from "../components/Tile.astro";
 import { getCollection } from 'astro:content';
 
 // Const
 
 const factions = await getCollection('factions');
+const personas = await getCollection('personas');
 ---
 
 <html lang="en">
@@ -23,11 +24,22 @@ const factions = await getCollection('factions');
 			<h1>Wiki</h1>
 			<div id="faction-container">
 				<h3>Fraktionen</h3>
-				<div id="faction-tile-container">
+				<div class="tile-container">
 				
 					{
 						factions.map((faction) => (
-							<FactionTile title={faction.data.title} url={`/factions/${faction.slug}`}/>
+							<Tile title={faction.data.title} url={`/factions/${faction.slug}`}/>
+						))
+					}
+				</div>
+			</div>
+			<div id="persona-container">
+				<h3>Fraktionen</h3>
+				<div class="tile-container">
+			
+					{
+						personas.map((persona) => (
+							<Tile title={persona.data.name} url={`/personas/${persona.slug}`} icon={persona.data.icon}/>
 						))
 					}
 				</div>
@@ -96,7 +108,19 @@ const factions = await getCollection('factions');
 		background-color: rgba(60, 27, 190, 0.7);
 	}
 
-	#faction-tile-container {
+	#persona-container {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		border: rgba(190, 27, 27, 0.7) 2px;
+		border-style: solid;
+		border-radius: 5px;
+		background-color: rgba(190, 27, 27, 0.7);
+	}
+
+	.tile-container {
 		justify-content: center;
 		display: flex;
 		flex-wrap: wrap;
