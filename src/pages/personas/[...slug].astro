@@ -1,4 +1,5 @@
 ---
+export const prerender = true;
 // Imports
 import { getCollection } from 'astro:content';
 import PersonaLayout from '../../layouts/PersonaLayout.astro';
@@ -12,7 +13,7 @@ export async function getStaticPaths() {
 	}));
 }
 
-const prerender = true;
+
 
 const { persona } = Astro.props;
 const { Content } = await persona.render();

@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 // Imports
 import { getCollection } from 'astro:content';
 import FactionLayout from '../../layouts/FactionLayout.astro';
@@ -11,8 +13,6 @@ export async function getStaticPaths() {
 		props: { company },
 	}));
 }
-
-const prerender = true;
 
 const { company } = Astro.props;
 const { Content } = await company.render();
