@@ -5,5 +5,5 @@ import mdx from "@astrojs/mdx";
 // https://astro.build/config
 export default defineConfig({
   integrations: [mdx()],
-  site: 'https://teilzeittodesengel.github.io',
+  site: 'https://infinite-space.github.io',
 });
