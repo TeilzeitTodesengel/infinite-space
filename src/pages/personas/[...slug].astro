@@ -12,6 +12,8 @@ export async function getStaticPaths() {
 	}));
 }
 
+const prerender = true;
+
 const { persona } = Astro.props;
 const { Content } = await persona.render();
 ---

@@ -12,6 +12,8 @@ export async function getStaticPaths() {
 	}));
 }
 
+const prerender = true;
+
 const { faction } = Astro.props;
 const { Content } = await faction.render();
 ---
