@@ -6,8 +6,9 @@ import { getCollection } from 'astro:content';
 
 // Const
 
-const factions = await getCollection('factions');
+const companies = await getCollection('companies');
 const personas = await getCollection('personas');
+const factions = await getCollection('factions');
 ---
 
 <html lang="en">
@@ -22,24 +23,35 @@ const personas = await getCollection('personas');
 	<body>
 		<div class="main-container">
 			<h1>Wiki</h1>
-			<div id="faction-container">
-				<h3>Fraktionen</h3>
+			<div id="company-container">
+				<h3>Firmen</h3>
 				<div class="tile-container">
 				
 					{
-						factions.map((faction) => (
-							<Tile title={faction.data.title} url={`/factions/${faction.slug}`}/>
+						companies.map((company) => (
+							<Tile title={company.data.title} url={`/companies/${company.slug}`}/>
 						))
 					}
 				</div>
 			</div>
 			<div id="persona-container">
-				<h3>Fraktionen</h3>
+				<h3>Personas</h3>
 				<div class="tile-container">
 			
 					{
 						personas.map((persona) => (
 							<Tile title={persona.data.name} url={`/personas/${persona.slug}`} icon={persona.data.icon}/>
+						))
+					}
+				</div>
+			</div>
+			<div id="faction-container">
+				<h3>Fraktionen</h3>
+				<div class="tile-container">
+			
+					{
+						factions.map((faction) => (
+							<Tile title={faction.data.title} url={`/faction/${faction.slug}`} icon={faction.data.icon}/>
 						))
 					}
 				</div>
@@ -96,7 +108,7 @@ const personas = await getCollection('personas');
 		flex-wrap: wrap;
 		
 	}
-	#faction-container {
+	#company-container {
 		display: flex;
 		flex-direction: column;
 		flex-wrap: wrap;
@@ -120,6 +132,18 @@ const personas = await getCollection('personas');
 		background-color: rgba(190, 27, 27, 0.7);
 	}
 
+	#faction-container {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		border: rgba(38, 230, 20, 0.7) 2px;
+		border-style: solid;
+		border-radius: 5px;
+		background-color: rgba(38, 230, 20, 0.7);
+	}
+	
 	.tile-container {
 		justify-content: center;
 		display: flex;
