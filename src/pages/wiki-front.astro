@@ -51,7 +51,7 @@ const factions = await getCollection('factions');
 			
 					{
 						factions.map((faction) => (
-							<Tile title={faction.data.title} url={`/personas/${faction.slug}`} icon={faction.data.icon}/>
+							<Tile title={faction.data.title} url={`/faction/${faction.slug}`} icon={faction.data.icon}/>
 						))
 					}
 				</div>
