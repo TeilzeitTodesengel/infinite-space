@@ -2,6 +2,7 @@
 // Imports
 import Header from "../components/Header.astro";
 import Tile from "../components/Tile.astro";
+import DefaultHead from "../components/DefaultHead.astro";
 import { getCollection } from 'astro:content';
 
 // Const
@@ -13,49 +14,48 @@ const factions = await getCollection('factions');
 
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Infinite Space</title>
+		<DefaultHead/>
 	</head>
     <header><Header/></header>
 	<body>
 		<div class="main-container">
 			<h1>Wiki</h1>
-			<div id="company-container">
-				<h3>Firmen</h3>
-				<div class="tile-container">
+			<div id="category-container">
+				<div id="company-container">
+					<h3>Firmen</h3>
+					<div class="tile-container">
+					
+						{
+							companies.map((company) => (
+								<Tile title={company.data.title} url={`/companies/${company.slug}`}/>
+							))
+						}
+					</div>
+				</div>
+				<div id="persona-container">
+					<h3>Personas</h3>
+					<div class="tile-container">
 				
-					{
-						companies.map((company) => (
-							<Tile title={company.data.title} url={`/companies/${company.slug}`}/>
-						))
-					}
+						{
+							personas.map((persona) => (
+								<Tile title={persona.data.name} url={`/personas/${persona.slug}`} icon={persona.data.icon}/>
+							))
+						}
+					</div>
+				</div>
+				<div id="faction-container">
+					<h3>Fraktionen</h3>
+					<div class="tile-container">
+				
+						{
+							factions.map((faction) => (
+								<Tile title={faction.data.title} url={`/faction/${faction.slug}`} icon={faction.data.icon}/>
+							))
+						}
+					</div>
 				</div>
 			</div>
-			<div id="persona-container">
-				<h3>Personas</h3>
-				<div class="tile-container">
 			
-					{
-						personas.map((persona) => (
-							<Tile title={persona.data.name} url={`/personas/${persona.slug}`} icon={persona.data.icon}/>
-						))
-					}
-				</div>
-			</div>
-			<div id="faction-container">
-				<h3>Fraktionen</h3>
-				<div class="tile-container">
-			
-					{
-						factions.map((faction) => (
-							<Tile title={faction.data.title} url={`/faction/${faction.slug}`} icon={faction.data.icon}/>
-						))
-					}
-				</div>
-			</div>
 			
 		</div>
 		
@@ -99,6 +99,7 @@ const factions = await getCollection('factions');
 	ul {
 		color: var(--heading-color);
 	}
+
 	.main-container {
 		width: 100%;
 		height: 100%;
@@ -106,9 +107,13 @@ const factions = await getCollection('factions');
 		align-items: center;
 		flex-direction: column;
 		flex-wrap: wrap;
-		
+		background-image: url("/InfiniteSpaceLogo.svg");
+		background-repeat: no-repeat;
+		background-position: 50%;
+		background-size: contain;
 	}
 	#company-container {
+		margin: 3px;
 		display: flex;
 		flex-direction: column;
 		flex-wrap: wrap;
@@ -121,6 +126,7 @@ const factions = await getCollection('factions');
 	}
 
 	#persona-container {
+		margin: 3px;
 		display: flex;
 		flex-direction: column;
 		flex-wrap: wrap;
@@ -133,6 +139,7 @@ const factions = await getCollection('factions');
 	}
 
 	#faction-container {
+		margin: 3px;
 		display: flex;
 		flex-direction: column;
 		flex-wrap: wrap;

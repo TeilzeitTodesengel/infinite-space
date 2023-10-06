@@ -2,17 +2,13 @@
 // 1. Die content-Eigenschaft bietet Zugriff auf Frontmatter-Daten
 const { title, tags, image } = Astro.props;
 import Header from '../components/Header.astro'
+import DefaultHead from '../components/DefaultHead.astro';
 
-const portrait = image ? `url(${image})` : null;
+const portrait = image ? `url(${image})` : 'url("/InfiniteSpaceLogo.svg")';
 ---
 <html>
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <!-- Füge hier andere Kopfzeilen-Elemente wie Stile und Meta-Tags hinzu. -->
-    <title>Infinite Space</title>
+    <DefaultHead/>
   </head>
   <header>
     <Header></Header>

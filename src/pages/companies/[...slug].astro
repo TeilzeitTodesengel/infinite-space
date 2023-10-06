@@ -1,7 +1,8 @@
 ---
 // Imports
 import { getCollection } from 'astro:content';
-import FactionLayout from '../../layouts/FactionLayout.astro';
+import DefaultHead from '../../components/DefaultHead.astro';
+import CompanyLayout from '../../layouts/CompanyLayout.astro';
 
 // Collection Handeling
 export async function getStaticPaths() {
@@ -17,16 +18,12 @@ const { Content } = await company.render();
 ---
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Infinite Space</title>
+		<DefaultHead/>
 	</head>
 	<body>
-		<FactionLayout {...company.data}>
+		<CompanyLayout {...company.data}>
 			<Content/>
-		</FactionLayout>
+		</CompanyLayout>
 	</body>
 </html>
 
